@@ -64,9 +64,9 @@ export default function Navbar() {
         <div className="brand">
           <span className="brand-icon" aria-hidden>🎓</span>
           <span className="brand-text">
-            <span className="brand-name">NIT</span>
+            <span className="brand-name">OXFORD</span>
             {/* <span className="brand-sep">~</span> */}
-            <span className="brand-accent">~DRIVE</span>
+            <span className="brand-accent">~HUB</span>
           </span>
         </div>
 

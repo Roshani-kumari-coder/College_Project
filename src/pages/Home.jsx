@@ -35,7 +35,7 @@ const icons = {
 }
 
 export default function Home() {
-  const FEE_LINK = 'https://drive.google.com/file/d/1xUIegcVcAwy-U0sZV_4VMQzTYXpbFFZL/view'
+  const FEE_LINK = 'https://www.oxfordbusinesscollege.org/admission/fee-structure/'
   const [modal, setModal] = useState({ open: false, title: '', content: null })
   const stripRef = useRef()
   const cardsRowRef = useRef()
@@ -82,8 +82,8 @@ export default function Home() {
     <div className="home">
       <section className="hero large-hero">
         <div className="container">
-          <h1 className="hero-title">All-In-One <span className="accent">NIT~DRIVE</span></h1>
-          <p className="hero-sub">Access notes, previous year questions, syllabus, and more for all semesters at NIT Raipur</p>
+          <h1 className="hero-title">All-In-One <span className="accent">OXFORD~HUB</span></h1>
+          <p className="hero-sub">Access notes, previous year questions, syllabus, and more for all Years at Oxford Hub</p>
         </div>
       </section>
 
@@ -121,70 +121,94 @@ export default function Home() {
                     if (s.key === 'pyq') return navigate('/pyq')
                     if (s.key === 'notes') return navigate('/notes')
                     if (s.key === 'placement') return navigate('/placement')
-                    if (s.key === 'books') {
-                      // Per-semester book links (use same links you provided for sem 1-5)
-                      const BOOKS_LINKS = [
-                        'https://mega.nz/file/7mIRzQ7Y#KfuHicBq7c3ti4R62S_GR8HtXSLk3IfAdj6Ti9n0BRw',
-                        'https://mega.nz/file/jy5CmYoL#8vBKf70yR5NBwrfbUdP5BKMmm53OaLS6yqJSN0uCgmY',
-                        'https://mega.nz/file/uipQQACB#NrclRoMZ5lwR2Oj5iEwzWa_wQGHHRq0yJjjETueYUts',
-                        'https://mega.nz/file/XmZ3BJYD#9gT4w8icDg9bPEagLWWuwY7C6tmbhDu8x3jzyISBIac',
-                        'https://mega.nz/folder/9xAhGA5Q#zlZMw_6ZsZtBZjhImHvzqA/file/Uh5nzCJR',
-                        null,
-                      ]
-                      const sems = [1, 2, 3, 4, 5, 6]
-                      setModal({
-                        open: true,
-                        title: 'Books',
-                        content: (
-                          <div className="books-modal">
-                            <p>Select semester to view books:</p>
-                            <div className="syll-grid-tiles">
-                              {sems.map((n) => (
-                                <div key={n} className="syll-tile">
-                                  <div className="tile-left">
-                                    <div className="tile-badge">{n}</div>
-                                  </div>
-                                  <div className="tile-main">
-                                    <h3>Semester {n}</h3>
-                                    <div className="muted">NIT Raipur</div>
-                                  </div>
-                                  <div className="tile-cta">
-                                    {BOOKS_LINKS[n - 1] ? (
-                                      <a className="btn small" href={BOOKS_LINKS[n - 1]} target="_blank" rel="noopener noreferrer">View</a>
-                                    ) : (
-                                      <button
-                                        type="button"
-                                        className="btn small"
-                                        onClick={() => {
-                                          // For semester 6 show the project modal
-                                          if (n === 6) {
-                                            setModal({ open: true, title: `Semester ${n}`, content: (
-                                              <div style={{textAlign:'center',padding:12}}>
-                                                <h3 style={{marginTop:0}}>Minor Project and Major Project</h3>
-                                                <p className="muted" style={{marginTop:8}}>6th Semester is all about Minor and Major project.</p>
-                                                <div style={{marginTop:14}}>
-                                                  <button className="btn primary" onClick={() => setModal({ open: false })}>OK</button>
-                                                </div>
-                                              </div>
-                                            ) })
-                                            return
-                                          }
-                                          setModal({ open: false })
-                                          navigate(`/notes?sem=${n}`)
-                                        }}
-                                      >
-                                        View
-                                      </button>
-                                    )}
-                                  </div>
-                                </div>
-                              ))}
+                   if (s.key === 'books') {
+
+  const SUBJECTS = {
+    1: [
+      "Computer Fundamentals",
+      "MS Office",
+      "HTML CSS JavaScript",
+      "Programming in C",
+      "Operating System",
+      "Software Analysis & Design"
+    ],
+    2: [
+      "Data Structure using C",
+      "Computer Organization & Architecture",
+      "OOP using C++",
+      "Core Java",
+      "Computer Network",
+      "Python"
+    ],
+    3: [
+      "VB.Net",
+      "DBMS & SQL Server",
+      "PHP",
+      "Artificial Intelligence",
+      "Multimedia"
+    ]
+  }
+
+  const BOOK_PDF = "/oxford_syb.pdf"
+
+  setModal({
+    open: true,
+    title: "Books",
+    content: (
+      <div>
+        <p>Select Year:</p>
+
+        <div className="syll-grid-tiles">
+          {[1,2,3].map((year) => (
+            <div key={year} className="syll-tile">
+              <div className="tile-left">
+                <div className="tile-badge">{year}</div>
+              </div>
+
+              <div className="tile-main">
+                <h3>Year {year}</h3>
+              </div>
+
+              <div className="tile-cta">
+                <button
+                  className="btn small"
+                  onClick={() =>
+                    setModal({
+                      open: true,
+                      title: `Year ${year} Subjects`,
+                      content: (
+                        <div>
+                          <p>Select Subject:</p>
+
+                          {SUBJECTS[year].map((sub) => (
+                            <div key={sub} style={{marginBottom:8}}>
+                              <button
+                                className="btn small"
+                                onClick={() => window.open(BOOK_PDF, "_blank")}
+                              >
+                                {sub}
+                              </button>
                             </div>
-                          </div>
-                        ),
-                      })
-                      return
-                    }
+                          ))}
+                        </div>
+                      )
+                    })
+                  }
+                >
+                  View
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  })
+
+  return
+}
+
+                                       
                     setModal({ open: true, title: s.label, content: `${s.label} — ${s.desc}` })
                   }}
               >
@@ -209,7 +233,7 @@ export default function Home() {
 
           <Card
             title="Memories"
-            subtitle="NITRR Epic Moments Gallery"
+            subtitle="Oxford_KR Epic Moments Gallery"
             icon={(
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5v14M5 12h14" stroke="#4a6cf7" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
             )}

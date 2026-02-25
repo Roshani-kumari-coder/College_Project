@@ -8,27 +8,20 @@ const NOTES_LINKS = [
   'https://drive.google.com/drive/folders/1gpBGHN5rQ7VO7nrJW-rwfLIwcy2GHQnT?usp=drive_link',
   'https://drive.google.com/drive/folders/1X9O8IVQrWu0-gitoJS26LRfWIsMjWwtR?usp=drive_link',
   'https://drive.google.com/drive/folders/1qiamCCR_jNjXY2foducRaYYfTHyHG5vs?usp=drive_link',
-  'https://drive.google.com/drive/folders/1e9P-heH7e3tufOtwI2Gc2ja_ZddygzpA?usp=drive_link',
-  'https://drive.google.com/drive/folders/15hZjMVxc8jKQ6QEj0Ejzosmk7EN_Ufxt?usp=drive_link',
   null,
 ]
 
 const PYQ_LINKS = [
-  'https://drive.google.com/drive/folders/1CsrKscTFv6BU_9jLe8TP0iGu9s3pFv_3?usp=drive_link',
-  'https://drive.google.com/drive/folders/1Zry9EW373D6trFhWWIyCGdZAW5lQJvZ8?usp=drive_link',
-  'https://drive.google.com/drive/folders/1T9b86w1dmlT9nfArqbbplvrJXxCl_nbV?usp=drive_link',
-  'https://drive.google.com/drive/folders/11Mgm8CDDMcHP65pT1zC2G_V2--aqgoC3?usp=drive_link',
-  'https://drive.google.com/drive/folders/1hgXUPZ85gfU-h8Pce-tuo6BVUHh1xuad?usp=drive_link',
+  'https://ppulearn.com/?dir=Previous%20Year%20Questions/Bachelor%27s%20Degree/Vocational%20Courses/BCA/Part%201',
+  'https://ppulearn.com/?dir=Previous%20Year%20Questions/Bachelor%27s%20Degree/Vocational%20Courses/BCA/Part%202',
+  'https://ppulearn.com/?dir=Previous%20Year%20Questions/Bachelor%27s%20Degree/Vocational%20Courses/BCA/Part%203',
   null,
 ]
 
 const semesters = [
   { id: 1, title: 'First Semester' },
   { id: 2, title: 'Second Semester' },
-  { id: 3, title: 'Third Semester' },
-  { id: 4, title: 'Fourth Semester' },
-  { id: 5, title: 'Fifth Semester' },
-  { id: 6, title: 'Sixth Semester' },
+  { id: 3, title: 'Third Semester' } 
 ]
 
 const sampleQuestions = {
@@ -125,8 +118,8 @@ export default function NotesPYQ({ initialTab }) {
                 <article key={s.id} className={`syll-tile unique`}>
                   <div className="tile-left"><div className={`tile-badge variant-${i}`}>{s.id}</div></div>
                   <div className="tile-main">
-                    <h3>{`Semester -${s.id}`}</h3>
-                    <p className="muted small">NIT Raipur</p>
+                    <h3>{`Year -${s.id}`}</h3>
+                    <p className="muted small">Oxford Hub</p>
                   </div>
                   <div className="tile-cta">
                  
@@ -155,8 +148,8 @@ export default function NotesPYQ({ initialTab }) {
                 <article key={s.id} className={`syll-tile unique`}>
                   <div className="tile-left"><div className={`tile-badge variant-${i}`}>{s.id}</div></div>
                   <div className="tile-main">
-                    <h3>{`Semester -${s.id}`}</h3>
-                    <p className="muted small"> NIT Raipur</p>
+                    <h3>{`Year -${s.id}`}</h3>
+                    <p className="muted small"> Oxford Hub</p>
                   </div>
                   <div className="tile-cta">
                     {/* <button className="btn primary" onClick={(e) => { e.stopPropagation(); alert('Open Notes placeholder for ' + s.title) }}>View</button> */}

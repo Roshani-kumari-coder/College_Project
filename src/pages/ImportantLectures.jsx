@@ -105,8 +105,9 @@ export default function ImportantLectures() {
                 <div className="tile-badge">{n}</div>
               </div>
               <div className="tile-main">
-                <h3>Semester {n}</h3>
-                <div className="muted">NIT Raipur</div>
+               <h3>Year {Math.ceil(n / 2)}</h3>
+
+                <div className="muted">Oxford Hub</div>
               </div>
               <div className="tile-cta">
                 {([1, 2, 3, 4, 5].includes(n)) ? (
@@ -146,7 +147,7 @@ export default function ImportantLectures() {
                     <button className="btn small" onClick={() => setModal({ open: true, title: `Semester ${n}`, content: (
                       <div style={{textAlign:'center',padding:12}}>
                         <h3 style={{marginTop:0}}>Minor Project and Major Project</h3>
-                        <p className="muted" style={{marginTop:8}}>6th Semester is all about Minor and Major project.</p>
+                        <p className="muted" style={{marginTop:8}}>3rd Year is all about Minor and Major project.</p>
                         <div style={{marginTop:14}}>
                           <button className="btn primary" onClick={() => setModal({ open: false })}>OK</button>
                         </div>
