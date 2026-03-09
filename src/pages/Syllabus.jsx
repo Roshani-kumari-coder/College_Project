@@ -5,16 +5,12 @@ import Modal from '../components/Modal'
 // Per-semester syllabus URLs — set to the links you provided
 const SYLLABUS_LINKS = [
   '/oxford_syb.pdf',
-  '/oxford_syb.pdf',
-  '/oxford_syb.pdf',
   null,
 ]
 
 const semesters = [
-  'First Year',
-  'Second Year',
-  'Third Year',
-  'Third Year',
+  'Complete Syllabus (All Years)',
+  'Final Year Projects',
 ]
 
 export default function Syllabus() {
