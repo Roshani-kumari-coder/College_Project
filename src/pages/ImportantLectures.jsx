@@ -4,7 +4,7 @@ import Modal from '../components/Modal'
 
 export default function ImportantLectures() {
   const [modal, setModal] = useState({ open: false, title: '', content: null })
-  const sems = [1, 2, 3, 4, 5, 6]
+  const sems = [1, 2, 3]
   const location = useLocation()
 
   // Per-semester lectures links — set to the links you provided
@@ -21,52 +21,34 @@ export default function ImportantLectures() {
   const SUBJECTS = {
     1: [
       'Operating System',
-      'Computer Oriented Numerical Analysis',
-      'Problem Solving and Programming',
-      'Computer System Architecture',
+      'Web Application – HTML, CSS & JavaScript ',
+      'Programming Logic and Algorithm with C Language ',
+      'Computer Fundamentals',
+      'Software Analysis and Design (SAD) ',
+      'Operating System with Linux and Windows ',
+      'Computer Lab',
       'Professional Communication in English',
-      'Computer Lab-101',
-      'Computer Lab-102',
     ],
     2: [
-      'Software Engineering',
-      'Statistical Computing',
-      'Data Structure',
-      'Database Management System',
-      'Theory of Computation',
-      'Computer Lab-201',
-      'Computer Lab-202',
+      'Data Structure using C ',
+      'Digital System And Computer Organization & Architecture ',
+      'Object Oriented Technology using C++ ',
+      'Core Java ',
+      'Computer Network and Internet Technology ',
+      'Python with Mini Project ',
+      'Computer Lab',
+      ' Hindi ',
     ],
     3: [
-      'Object Oriented Concepts & Java',
-      'Data Science',
-      'Analysis and Design of Algorithms',
-      'Computer Network',
-      'Compiler Design',
-      'Computer Lab-301',
-      'Computer Lab-302',
+      'VB.Net  ',
+      'Database Management System and SQL Server ',
+      'PHP : Server Side Scripting  ',
+      'Artificial Intelligence ',
+      'Multimedia ',
+      'General Studies ',
+      'Computer Lab',
     ],
-    4: [
-      'AI & Machine Learning',
-      'Computer Oriented Optimization',
-      'Cryptography & Network Security',
-      'Web Technology - Advance Java',
-      'Advance Data Mining',
-      'Language Lab-403-GD/PI',
-      'Computer Lab-401',
-      'Computer Lab-402',
-    ],
-    5: [
-      'Distributed Computing',
-      'Cloud Computing',
-      'Swarm Intelligence & Evolutionary Algorithms (Ele-IV)',
-      'Mobile Computing (Ele-IV)',
-      'Pattern Recognition (Open Ele-II)',
-      'Digital Image Processing (Open Ele-II)',
-      '7+ More Subjects will be there as Open Ele-II',
-      'Computer Lab-501',
-      'Minor Project-502',
-    ],
+    
   }
 
   // Playlist URLs for each subject (replace null with actual playlist URL strings)
