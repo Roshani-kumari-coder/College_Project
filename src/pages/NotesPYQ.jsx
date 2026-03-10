@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 // Per-semester links for Notes and PYQ — set to the links you provided
 const NOTES_LINKS = [
-  'https://drive.google.com/drive/folders/1gpBGHN5rQ7VO7nrJW-rwfLIwcy2GHQnT?usp=drive_link',
+  'https://drive.google.com/drive/folders/1Y0ElOJTBJ3PFUOdlCgB2_WHP62_qHusf',
   'https://drive.google.com/drive/folders/19iuiEs5dhN9bOdJit3S_BtvZwHlaXU4W',
   'https://drive.google.com/drive/folders/1qiamCCR_jNjXY2foducRaYYfTHyHG5vs?usp=drive_link',
   null,
