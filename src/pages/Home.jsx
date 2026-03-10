@@ -238,7 +238,7 @@ export default function Home() {
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5v14M5 12h14" stroke="#4a6cf7" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
             )}
             actionLabel="Contribute"
-           onAction={() => window.open('https://chatgpt.com/c/69849de9-746c-8320-ba40-e6130ecde57a', '_blank')}
+           onAction={() => window.open('https://www.youtube.com/@OXFORDBUSINESSCOLLEGE_PATNA', '_blank')}
           />
 
           <Card

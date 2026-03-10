@@ -3,11 +3,11 @@ import Modal from '../components/Modal'
 
 const sample = [
   { id: 1, title: 'Software Engineer Intern', type: 'Internship', org: 'Acme Tech', date: 'Mar 15, 2026', desc: '6-month internship for backend/frontend interns. Stipend: ₹25,000.', url: 'https://example.com/apply/software-intern' },
-  { id: 2, title: 'Campus Placement: Product Engineer', type: 'Job', org: 'Vertex Labs', date: 'Mar 12, 2026', desc: 'Full-time role — CS grads preferred. Apply with resume.', url: 'https://vertexlabs.example.com/careers/pe' },
-  { id: 3, title: 'Hackathon 2026', type: 'Event', org: 'NITRR Students Club', date: 'Apr 02, 2026', desc: '24-hour hackathon with prizes and mentorship.', url: 'https://nitrr.example.com/hackathon-2026' },
-  { id: 4, title: 'Research Assistant Opening', type: 'Job', org: 'Dept. of CSE', date: 'Mar 20, 2026', desc: 'Part-time research assistant for ML projects.', url: 'mailto:research@nitrr.ac.in' },
-  { id: 5, title: 'Summer Internship - Embedded', type: 'Internship', org: 'Robotics Co.', date: 'Apr 10, 2026', desc: 'Summer internship on embedded systems and firmware.', url: 'https://robotics.example.com/internships/embedded' },
-  { id: 6, title: 'Workshop: Data Science', type: 'Event', org: 'Analytics Cell', date: 'Mar 28, 2026', desc: 'Two-day workshop covering Python and ML basics.', url: 'https://nitrr.example.com/events/data-science-workshop' },
+  // { id: 2, title: 'Campus Placement: Product Engineer', type: 'Job', org: 'Vertex Labs', date: 'Mar 12, 2026', desc: 'Full-time role — CS grads preferred. Apply with resume.', url: 'https://vertexlabs.example.com/careers/pe' },
+  // { id: 3, title: 'Hackathon 2026', type: 'Event', org: 'NITRR Students Club', date: 'Apr 02, 2026', desc: '24-hour hackathon with prizes and mentorship.', url: 'https://nitrr.example.com/hackathon-2026' },
+  // { id: 4, title: 'Research Assistant Opening', type: 'Job', org: 'Dept. of CSE', date: 'Mar 20, 2026', desc: 'Part-time research assistant for ML projects.', url: 'mailto:research@nitrr.ac.in' },
+  // { id: 5, title: 'Summer Internship - Embedded', type: 'Internship', org: 'Robotics Co.', date: 'Apr 10, 2026', desc: 'Summer internship on embedded systems and firmware.', url: 'https://robotics.example.com/internships/embedded' },
+  // { id: 6, title: 'Workshop: Data Science', type: 'Event', org: 'Analytics Cell', date: 'Mar 28, 2026', desc: 'Two-day workshop covering Python and ML basics.', url: 'https://nitrr.example.com/events/data-science-workshop' },
 ]
 
 export default function Announcements() {
