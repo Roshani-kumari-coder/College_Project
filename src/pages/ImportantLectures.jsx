@@ -12,8 +12,6 @@ export default function ImportantLectures() {
     'https://mega.nz/file/7mIRzQ7Y#KfuHicBq7c3ti4R62S_GR8HtXSLk3IfAdj6Ti9n0BRw',
     'https://mega.nz/file/jy5CmYoL#8vBKf70yR5NBwrfbUdP5BKMmm53OaLS6yqJSN0uCgmY',
     'https://mega.nz/file/uipQQACB#NrclRoMZ5lwR2Oj5iEwzWa_wQGHHRq0yJjjETueYUts',
-    'https://mega.nz/file/XmZ3BJYD#9gT4w8icDg9bPEagLWWuwY7C6tmbhDu8x3jzyISBIac',
-    'https://mega.nz/folder/9xAhGA5Q#zlZMw_6ZsZtBZjhImHvzqA/file/Uh5nzCJR',
     null,
   ]
 
@@ -53,13 +51,11 @@ export default function ImportantLectures() {
 
   // Playlist URLs for each subject (replace null with actual playlist URL strings)
   // Structure: SUBJECT_PLAYLISTS[sem] = [urlForSubject1, urlForSubject2, ...]
-  const SUBJECT_PLAYLISTS = {
-    1: [null, null, null, null, null, null, null],
-    2: [null, null, null, null, null, null, null],
-    3: [null, null, null, null, null, null, null],
-    4: [null, null, null, null, null, null, null, null],
-    5: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-  }
+const SUBJECT_PLAYLISTS = {
+  1: [null, null, null, null, null, null, null, null],
+  2: [null, null, null, null, null, null, null, null],
+  3: [null, null, null, null, null, null, null],
+}
 
   useEffect(() => {
     if (location.hash === '#important-announcement') {
@@ -87,7 +83,7 @@ export default function ImportantLectures() {
                 <div className="tile-badge">{n}</div>
               </div>
               <div className="tile-main">
-               <h3>Year {Math.ceil(n / 2)}</h3>
+               <h3>Year {n}</h3>
 
                 <div className="muted">Oxford Hub</div>
               </div>
