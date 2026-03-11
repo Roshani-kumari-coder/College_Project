@@ -731,14 +731,7 @@ html, body, .container, .card, .nav-inner { transition: background-color .24s ea
 
 /* PYQ layout tweaks to match Notes style */
 .syllabus-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:1100px;margin:8px auto 0}
-.light-panel{
-  padding:48px 36px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
-  border-radius:18px;
-  border:1px solid rgba(255,255,255,0.03);
-  box-shadow:0 40px 120px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
-  margin:18px 18px 34px;
-}
+
 .page.syllabus-page .syll-top{margin-bottom:8px;text-align:center}
 .page.syllabus-page .syll-top h1, .page.syllabus-page .syll-top h2{font-size:38px;margin:0 0 6px}
 .page.syllabus-page .syll-top .muted{font-size:15px;color:var(--muted)}
@@ -866,12 +859,12 @@ html, body, .container, .card, .nav-inner { transition: background-color .24s ea
 .announcement-card.type-Event .announce-badge{background:linear-gradient(180deg,#f97316,#7c2d12)}
 
 /* Strong layout overrides for PYQ page to ensure all 6 cards fit inside the panel */
-.page.syllabus-page .light-panel{
+/* .page.syllabus-page .light-panel{
   max-width:1100px !important;
   padding:32px !important;
   box-sizing:border-box !important;
   overflow:visible !important;
-}
+} */
 .page.syllabus-page .light-panel .syllabus-grid{
   display:grid !important;
   grid-template-columns:repeat(3,1fr) !important;
