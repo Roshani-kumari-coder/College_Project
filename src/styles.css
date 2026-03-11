@@ -306,11 +306,7 @@ html, body, .container, .card, .nav-inner { transition: background-color .24s ea
   }
 
 }
-.syll-grid-tiles{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
+
 /* Scoped light-page variant for Syllabus / PYQ to match Image 2 */
 .light-page{background:transparent;color:var(--text)}
 .light-page .syll-top, .light-page .pyq-hero{background:transparent}
