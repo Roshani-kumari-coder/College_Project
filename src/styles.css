@@ -696,7 +696,7 @@ html, body, .container, .card, .nav-inner { transition: background-color .24s ea
 /* Tile-style unique */
 .syll-tile.unique{padding:16px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 30px 80px rgba(2,6,23,0.12);display:flex;align-items:center;gap:16px}
 .tile-badge{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff}
-.tile-main h3{ margin:0;font-size:16px; white-space:nowrap;}
+.tile-main h3{ margin:0;font-size:16px; white-space:normal;}
 .tile-badge.variant-0{background:linear-gradient(135deg,#ff8a65,#ff5252)}
 .tile-badge.variant-1{background:linear-gradient(135deg,#6dd3ff,#6b8eff)}
 .tile-badge.variant-2{background:linear-gradient(135deg,#9b8cff,#c77dff)}
@@ -707,7 +707,20 @@ html, body, .container, .card, .nav-inner { transition: background-color .24s ea
   flex:1;
   min-width:0;
 }
+@media (max-width:480px){
 
+  .syll-tile{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .tile-main{
+    flex:1;
+    min-width:0;
+  }
+
+}
 .tile-cta{
   flex-shrink:0;
 }
