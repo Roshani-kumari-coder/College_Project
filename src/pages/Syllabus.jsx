@@ -9,7 +9,7 @@ const SYLLABUS_LINKS = [
 ]
 
 const semesters = [
-  'Complete Syllabus (All Years)',
+  'Complete Syllabus',
   'Final Year Projects',
 ]
 
