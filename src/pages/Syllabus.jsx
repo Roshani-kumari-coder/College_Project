@@ -24,7 +24,7 @@ export default function Syllabus() {
           <p className="syll-sub" style={{color:'var(--muted)',marginTop:8}}>Complete semester-wise syllabus for all subjects</p>
         </div>
 
-          <div className="syll-grid-tiles" style={{marginTop:36}}>
+          <div className="syll-grid-tiles" style={{marginTop:34}}>
             {semesters.map((s, i) => (
               <article key={s} className="syll-tile unique">
                 <div className="tile-left">
