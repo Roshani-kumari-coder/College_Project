@@ -282,17 +282,7 @@ html, body, .container, .card, .nav-inner { transition: background-color .24s ea
 .tile-cta{
   flex-shrink: 0;
 }
-@media (max-width:480px){
 
-  .tile-main h3{
-    font-size:15px;
-  }
-
-  .syll-tile{
-    padding:14px;
-  }
-
-}
 @media (max-width:980px){
   .syllabus-page .syllabus-grid{grid-template-columns:repeat(2,1fr)}
   .syll-grid-tiles{grid-template-columns:repeat(1,1fr);padding:0 16px}
