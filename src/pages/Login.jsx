@@ -11,19 +11,19 @@ export default function Login() {
     confirmPassword: ""
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    if (form.password !== form.confirmPassword) {
-      alert("Password not match");
-      return;
-    }
+  if (form.password !== form.confirmPassword) {
+    alert("Password not match");
+    return;
+  }
 
-    alert("Login Success");
+  // ✅ login save
+  localStorage.setItem("isLoggedIn", "true");
 
-    // ✅ redirect to home
-    navigate("/");
-  };
+  navigate("/");
+};
 
   return (
     <div style={{height:"100vh",display:"flex",justifyContent:"center",alignItems:"center",background:"linear-gradient(to right,#4facfe,#00f2fe)"}}>

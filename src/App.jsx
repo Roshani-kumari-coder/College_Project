@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import ImportantLectures from './pages/ImportantLectures'
 import Login from './pages/Login'
+import ProtectedRoute from './components/ProtectedRoute'
 import Announcements from './pages/Announcements'
 import NotesPYQ from './pages/NotesPYQ'
 import Faculty from './pages/Faculty'
@@ -16,28 +17,79 @@ import ImpTools from './pages/ImpTools'
 import Footer from './components/Footer'
 
 export default function App() {
+
+  // 👇 login page detect
+  const isLoginPage = window.location.pathname === "/login";
+
   return (
     <div className="app-root">
-     
-      <Navbar />
+
+      {/* ❌ login page me navbar hide */}
+      {!isLoginPage && <Navbar />}
+
       <main className="container">
         <Routes>
-            <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/syllabus" element={<Syllabus />} />
-          <Route path="/lectures" element={<ImportantLectures />} />
-          <Route path="/announcements" element={<Announcements />} />
-          <Route path="/notes" element={<NotesPYQ initialTab="notes" />} />
-          <Route path="/pyq" element={<NotesPYQ initialTab="pyq" />} />
-          <Route path="/placement" element={<Placement />} />
-          <Route path="/faculty" element={<Faculty />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/roadmap" element={<Roadmap />} />
-          <Route path="/roadmap/:id" element={<RoadmapDetail />} />
-          <Route path="/tools" element={<ImpTools />} />
+
+          {/* ✅ Login route (always open) */}
+          <Route path="/login" element={<Login />} />
+
+          {/* 🔐 Protected Routes */}
+          <Route path="/" element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          } />
+
+          <Route path="/syllabus" element={
+            <ProtectedRoute><Syllabus /></ProtectedRoute>
+          } />
+
+          <Route path="/lectures" element={
+            <ProtectedRoute><ImportantLectures /></ProtectedRoute>
+          } />
+
+          <Route path="/announcements" element={
+            <ProtectedRoute><Announcements /></ProtectedRoute>
+          } />
+
+          <Route path="/notes" element={
+            <ProtectedRoute><NotesPYQ initialTab="notes" /></ProtectedRoute>
+          } />
+
+          <Route path="/pyq" element={
+            <ProtectedRoute><NotesPYQ initialTab="pyq" /></ProtectedRoute>
+          } />
+
+          <Route path="/placement" element={
+            <ProtectedRoute><Placement /></ProtectedRoute>
+          } />
+
+          <Route path="/faculty" element={
+            <ProtectedRoute><Faculty /></ProtectedRoute>
+          } />
+
+          <Route path="/blog" element={
+            <ProtectedRoute><Blog /></ProtectedRoute>
+          } />
+
+          <Route path="/roadmap" element={
+            <ProtectedRoute><Roadmap /></ProtectedRoute>
+          } />
+
+          <Route path="/roadmap/:id" element={
+            <ProtectedRoute><RoadmapDetail /></ProtectedRoute>
+          } />
+
+          <Route path="/tools" element={
+            <ProtectedRoute><ImpTools /></ProtectedRoute>
+          } />
+
         </Routes>
       </main>
-      <Footer />
+
+      {/* ❌ login page me footer hide */}
+      {!isLoginPage && <Footer />}
+
     </div>
   )
 }
