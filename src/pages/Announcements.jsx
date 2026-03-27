@@ -28,8 +28,10 @@ export default function Announcements() {
       <div className="light-panel">
         <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',gap:12,flexWrap:'wrap'}}>
           <div>
-            <h2 style={{margin:0}}>Important Announcement — details</h2>
-            <p className="muted">Latest notices and circulars</p>
+            <h2 style={{margin:0,  marginLeft:"230px"}}>Important Announcement — details</h2>
+            <p className="muted" style={{marginLeft:"330px"}}>
+  Latest notices and circulars
+</p>
           </div>
         </div>
 

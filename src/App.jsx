@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import ImportantLectures from './pages/ImportantLectures'
+import Login from './pages/Login'
 import Announcements from './pages/Announcements'
 import NotesPYQ from './pages/NotesPYQ'
 import Faculty from './pages/Faculty'
@@ -21,6 +22,7 @@ export default function App() {
       <Navbar />
       <main className="container">
         <Routes>
+            <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/syllabus" element={<Syllabus />} />
           <Route path="/lectures" element={<ImportantLectures />} />
