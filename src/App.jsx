@@ -17,79 +17,68 @@ import ImpTools from './pages/ImpTools'
 import Footer from './components/Footer'
 
 export default function App() {
-
-  // 👇 login page detect
-  const isLoginPage = window.location.pathname === "/login";
-
   return (
     <div className="app-root">
-
-      {/* ❌ login page me navbar hide */}
-      {!isLoginPage && <Navbar />}
-
+     
+      <Navbar />
       <main className="container">
-        <Routes>
+       <Routes>
 
-          {/* ✅ Login route (always open) */}
-          <Route path="/login" element={<Login />} />
+  {/* Login page */}
+  <Route path="/login" element={<Login />} />
 
-          {/* 🔐 Protected Routes */}
-          <Route path="/" element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          } />
+  {/* Protected pages */}
+  <Route path="/" element={
+    <ProtectedRoute><Home /></ProtectedRoute>
+  } />
 
-          <Route path="/syllabus" element={
-            <ProtectedRoute><Syllabus /></ProtectedRoute>
-          } />
+  <Route path="/syllabus" element={
+    <ProtectedRoute><Syllabus /></ProtectedRoute>
+  } />
 
-          <Route path="/lectures" element={
-            <ProtectedRoute><ImportantLectures /></ProtectedRoute>
-          } />
+  <Route path="/lectures" element={
+    <ProtectedRoute><ImportantLectures /></ProtectedRoute>
+  } />
 
-          <Route path="/announcements" element={
-            <ProtectedRoute><Announcements /></ProtectedRoute>
-          } />
+  <Route path="/announcements" element={
+    <ProtectedRoute><Announcements /></ProtectedRoute>
+  } />
 
-          <Route path="/notes" element={
-            <ProtectedRoute><NotesPYQ initialTab="notes" /></ProtectedRoute>
-          } />
+  <Route path="/notes" element={
+    <ProtectedRoute><NotesPYQ initialTab="notes" /></ProtectedRoute>
+  } />
 
-          <Route path="/pyq" element={
-            <ProtectedRoute><NotesPYQ initialTab="pyq" /></ProtectedRoute>
-          } />
+  <Route path="/pyq" element={
+    <ProtectedRoute><NotesPYQ initialTab="pyq" /></ProtectedRoute>
+  } />
 
-          <Route path="/placement" element={
-            <ProtectedRoute><Placement /></ProtectedRoute>
-          } />
+  <Route path="/placement" element={
+    <ProtectedRoute><Placement /></ProtectedRoute>
+  } />
 
-          <Route path="/faculty" element={
-            <ProtectedRoute><Faculty /></ProtectedRoute>
-          } />
+  <Route path="/faculty" element={
+    <ProtectedRoute><Faculty /></ProtectedRoute>
+  } />
 
-          <Route path="/blog" element={
-            <ProtectedRoute><Blog /></ProtectedRoute>
-          } />
+  <Route path="/blog" element={
+    <ProtectedRoute><Blog /></ProtectedRoute>
+  } />
 
-          <Route path="/roadmap" element={
-            <ProtectedRoute><Roadmap /></ProtectedRoute>
-          } />
+  <Route path="/roadmap" element={
+    <ProtectedRoute><Roadmap /></ProtectedRoute>
+  } />
 
-          <Route path="/roadmap/:id" element={
-            <ProtectedRoute><RoadmapDetail /></ProtectedRoute>
-          } />
+  <Route path="/roadmap/:id" element={
+    <ProtectedRoute><RoadmapDetail /></ProtectedRoute>
+  } />
 
-          <Route path="/tools" element={
-            <ProtectedRoute><ImpTools /></ProtectedRoute>
-          } />
+  <Route path="/tools" element={
+    <ProtectedRoute><ImpTools /></ProtectedRoute>
+  } />
 
-        </Routes>
+</Routes>
       </main>
-
-      {/* ❌ login page me footer hide */}
-      {!isLoginPage && <Footer />}
-
+      <Footer />
     </div>
   )
 }
