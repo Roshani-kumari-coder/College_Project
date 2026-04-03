@@ -16,11 +16,17 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [theme, setTheme] = useState(() => {
     try {
-      return localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      return localStorage.getItem('theme') || 
+        (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
     } catch (e) {
       return 'light'
     }
   })
+
+  const navigate = useNavigate()
+
+  // ✅ user fetch
+  const user = localStorage.getItem("user")
 
   useEffect(() => {
     try {
@@ -29,7 +35,11 @@ export default function Navbar() {
     } catch (e) {}
   }, [theme])
 
-  const navigate = useNavigate()
+  // ✅ logout function
+  function handleLogout() {
+    localStorage.clear()
+    navigate("/login")
+  }
 
   function goToAnnouncements() {
     try {
@@ -47,7 +57,6 @@ export default function Navbar() {
       }
       const previous = window.location.pathname
       navigate('/announcements')
-      // fallback: if SPA navigation didn't change the path, force a full load
       setTimeout(() => {
         if (window.location.pathname === previous) {
           window.location.href = '/announcements'
@@ -60,63 +69,116 @@ export default function Navbar() {
 
   return (
     <header className="navbar">
-      <div className="nav-inner container">
-        <div className="brand">
-          <span className="brand-icon" aria-hidden>🎓</span>
-          <span className="brand-text">
+    <div className="nav-inner container" style={{
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  gap: "2px",
+  flexWrap: "nowrap",
+  maxWidth: "1200px",   // 👈 IMPORTANT
+  margin: "0 auto",     // 👈 CENTER
+  padding: "0 20px"
+}}>
+
+        {/* Logo */}
+       <div className="brand" style={{marginRight:"6px"}}>
+          <span className="brand-icon">🎓</span>
+         <span className="brand-text" style={{display:"flex", gap:"2px"}}>
             <span className="brand-name">OXFORD</span>
-            {/* <span className="brand-sep">~</span> */}
             <span className="brand-accent">~HUB</span>
           </span>
         </div>
 
-        <button className="nav-toggle" onClick={() => setOpen((v) => !v)} aria-label="Toggle menu">
+        {/* Mobile toggle */}
+        <button className="nav-toggle" onClick={() => setOpen(!open)}>
           <span className="bar" />
           <span className="bar" />
           <span className="bar" />
         </button>
 
-        <nav className={"nav-links" + (open ? ' open' : '')} onClick={() => setOpen(false)}>
+        {/* Links */}
+        <nav 
+  className={"nav-links" + (open ? ' open' : '')}
+  style={{flexShrink: 1,  gap:"12px"}} onClick={() => setOpen(false)}>
           {links.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
               end={l.to === '/'}
-              className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+              className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
             >
               {l.label}
             </NavLink>
           ))}
         </nav>
 
-        <button
-          className="nav-notif icon-btn"
-          aria-label="Announcements"
-          title="Important announcements"
-          onClick={(e) => {
-            console.log('Announcements icon clicked')
-            goToAnnouncements()
-          }}
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M3 11v2a2 2 0 002 2h2l5 3V6L7 9H5a2 2 0 00-2 2z" fill="currentColor" />
-            <path d="M19 8v8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M22 6v12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.6"/>
-          </svg>
-          <span className="notif-badge" />
-        </button>
+        {/* Right Side Controls */}
+   <div style={{
+  display:"flex",
+  alignItems:"center",
+  gap:"14px",
+  flexShrink: 0   // 👈 important
+}}>
 
-        <button
-          className="theme-toggle"
-          onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
-          aria-label="Toggle theme"
-        >
-          {theme === 'dark' ? (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          ) : (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4M12 7a5 5 0 100 10 5 5 0 000-10z" stroke="#111" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          {/* Announcement */}
+          <button className="nav-notif icon-btn" onClick={goToAnnouncements}>
+            🔔
+          </button>
+
+          {/* Theme */}
+          <button
+            className="theme-toggle"
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          >
+            {theme === 'dark' ? "🌙" : "☀️"}
+          </button>
+
+          {/* ✅ USER + LOGOUT */}
+          {user && (
+            <>
+             <div style={{
+  display:"flex",
+  flexDirection:"column",
+  lineHeight:"1.1"
+}}>
+  <span style={{
+  fontSize:"11px",
+  opacity:0.7,
+  color: theme === "dark" ? "#ccc" : "#555"
+}}>
+  Hi
+</span>
+ <span style={{
+  fontSize:"14px",
+  fontWeight:"600",
+  color: theme === "dark" ? "#fff" : "#555"   // 👈 FIX
+}}>
+    {user?.split(" ")[0]}
+  </span>
+</div>
+<button
+  onClick={handleLogout}
+  style={{
+    padding:"6px 12px",
+    fontSize:"12px",
+    borderRadius:"8px",
+    border:"1px solid rgba(255,255,255,0.2)",
+    background:"linear-gradient(135deg,#ff4d4d,#ff6b6b)",
+    color:"#fff",
+    cursor:"pointer",
+    boxShadow:"0 4px 12px rgba(255,77,77,0.4)",
+    transition:"0.3s"
+  }}
+  onMouseOver={(e)=>e.target.style.transform="scale(1.05)"}
+  onMouseOut={(e)=>e.target.style.transform="scale(1)"}
+>
+   Logout
+</button>
+            </>
           )}
-        </button>
+
+        </div>
+
       </div>
     </header>
   )

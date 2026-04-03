@@ -1,123 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College Login</title>
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import ImportantLectures from './pages/ImportantLectures'
+import Login from './pages/Login'
+import ProtectedRoute from './components/ProtectedRoute'
+import Announcements from './pages/Announcements'
+import NotesPYQ from './pages/NotesPYQ'
+import Faculty from './pages/Faculty'
+import Blog from './pages/Blog'
+import Syllabus from './pages/Syllabus'
+import Placement from './pages/Placement'
+import Roadmap from './pages/Roadmap'
+import RoadmapDetail from './pages/RoadmapDetail'
+import ImpTools from './pages/ImpTools'
+import Footer from './components/Footer'
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            height: 100vh;
-            background: linear-gradient(to right, #4facfe, #00f2fe);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .login-box {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            width: 350px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-
-        .login-box h2 {
-            margin-bottom: 10px;
-        }
-
-        .input-box {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-
-        .input-box label {
-            font-size: 14px;
-        }
-
-        .input-box input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 10px;
-            background: #4facfe;
-            border: none;
-            color: white;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .login-btn:hover {
-            background: #00c6ff;
-        }
-    </style>
-</head>
-<body>
-
-<div class="login-box">
-    <h2>College Portal</h2>
-
-    <form onsubmit="handleLogin(event)">
-        
-        <div class="input-box">
-            <label>Name</label>
-            <input type="text" id="name" required>
-        </div>
-
-        <div class="input-box">
-            <label>Email</label>
-            <input type="email" id="email" required>
-        </div>
-
-        <div class="input-box">
-            <label>Password</label>
-            <input type="password" id="password" required>
-        </div>
-
-        <div class="input-box">
-            <label>Confirm Password</label>
-            <input type="password" id="confirmPassword" required>
-        </div>
-
-        <button class="login-btn">Login</button>
-
-    </form>
-</div>
-
-<script>
-function handleLogin(event) {
-    event.preventDefault();
-
-    let password = document.getElementById("password").value;
-    let confirmPassword = document.getElementById("confirmPassword").value;
-
-    if (password !== confirmPassword) {
-        alert("Password does not match!");
-        return;
-    }
-
-    // simple success login
-    alert("Login Successful!");
-
-    // 🔥 redirect to home page
-    window.location.href = "index.html";  
+export default function App() {
+  return (
+    <div className="app-root">
+     
+      <Navbar />
+      <main className="container">
+        <Routes>
+            <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/syllabus" element={<Syllabus />} />
+          <Route path="/lectures" element={<ImportantLectures />} />
+          <Route path="/announcements" element={<Announcements />} />
+          <Route path="/notes" element={<NotesPYQ initialTab="notes" />} />
+          <Route path="/pyq" element={<NotesPYQ initialTab="pyq" />} />
+          <Route path="/placement" element={<Placement />} />
+          <Route path="/faculty" element={<Faculty />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/roadmap" element={<Roadmap />} />
+          <Route path="/roadmap/:id" element={<RoadmapDetail />} />
+          <Route path="/tools" element={<ImpTools />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
+  )
 }
-</script>
-
-</body>
-</html>

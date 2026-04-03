@@ -1,8 +1,9 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import ImportantLectures from './pages/ImportantLectures'
+import Register from './pages/Register'
 import Login from './pages/Login'
 import ProtectedRoute from './components/ProtectedRoute'
 import Announcements from './pages/Announcements'
@@ -17,68 +18,79 @@ import ImpTools from './pages/ImpTools'
 import Footer from './components/Footer'
 
 export default function App() {
+
+ const location = useLocation();
+const isAuthPage =
+  location.pathname === "/login" ||
+  location.pathname === "/register";
+
   return (
     <div className="app-root">
-     
-      <Navbar />
-      <main className="container">
-       <Routes>
 
-  {/* Login page */}
-  <Route path="/login" element={<Login />} />
+      {/* ✅ Login page pe kuch bhi nahi */}
+     {!isAuthPage && <Navbar />}
 
-  {/* Protected pages */}
-  <Route path="/" element={
-    <ProtectedRoute><Home /></ProtectedRoute>
-  } />
+      <main className={isAuthPage ? "" : "container"}>
+        <Routes>
 
-  <Route path="/syllabus" element={
-    <ProtectedRoute><Syllabus /></ProtectedRoute>
-  } />
+          {/* 🔥 Login full page */}
+           <Route path="/register" element={<Register />} />
+         <Route path="*" element={<Navigate to="/login" />} />
 
-  <Route path="/lectures" element={
-    <ProtectedRoute><ImportantLectures /></ProtectedRoute>
-  } />
+          {/* 🔐 Protected */}
+          <Route path="/" element={
+            <ProtectedRoute><Home /></ProtectedRoute>
+          } />
 
-  <Route path="/announcements" element={
-    <ProtectedRoute><Announcements /></ProtectedRoute>
-  } />
+          <Route path="/syllabus" element={
+            <ProtectedRoute><Syllabus /></ProtectedRoute>
+          } />
 
-  <Route path="/notes" element={
-    <ProtectedRoute><NotesPYQ initialTab="notes" /></ProtectedRoute>
-  } />
+          <Route path="/lectures" element={
+            <ProtectedRoute><ImportantLectures /></ProtectedRoute>
+          } />
 
-  <Route path="/pyq" element={
-    <ProtectedRoute><NotesPYQ initialTab="pyq" /></ProtectedRoute>
-  } />
+          <Route path="/announcements" element={
+            <ProtectedRoute><Announcements /></ProtectedRoute>
+          } />
 
-  <Route path="/placement" element={
-    <ProtectedRoute><Placement /></ProtectedRoute>
-  } />
+          <Route path="/notes" element={
+            <ProtectedRoute><NotesPYQ initialTab="notes" /></ProtectedRoute>
+          } />
 
-  <Route path="/faculty" element={
-    <ProtectedRoute><Faculty /></ProtectedRoute>
-  } />
+          <Route path="/pyq" element={
+            <ProtectedRoute><NotesPYQ initialTab="pyq" /></ProtectedRoute>
+          } />
 
-  <Route path="/blog" element={
-    <ProtectedRoute><Blog /></ProtectedRoute>
-  } />
+          <Route path="/placement" element={
+            <ProtectedRoute><Placement /></ProtectedRoute>
+          } />
 
-  <Route path="/roadmap" element={
-    <ProtectedRoute><Roadmap /></ProtectedRoute>
-  } />
+          <Route path="/faculty" element={
+            <ProtectedRoute><Faculty /></ProtectedRoute>
+          } />
 
-  <Route path="/roadmap/:id" element={
-    <ProtectedRoute><RoadmapDetail /></ProtectedRoute>
-  } />
+          <Route path="/blog" element={
+            <ProtectedRoute><Blog /></ProtectedRoute>
+          } />
 
-  <Route path="/tools" element={
-    <ProtectedRoute><ImpTools /></ProtectedRoute>
-  } />
+          <Route path="/roadmap" element={
+            <ProtectedRoute><Roadmap /></ProtectedRoute>
+          } />
 
-</Routes>
+          <Route path="/roadmap/:id" element={
+            <ProtectedRoute><RoadmapDetail /></ProtectedRoute>
+          } />
+
+          <Route path="/tools" element={
+            <ProtectedRoute><ImpTools /></ProtectedRoute>
+          } />
+
+        </Routes>
       </main>
-      <Footer />
+
+    {!isAuthPage && <Footer />}
+
     </div>
   )
 }
