@@ -22,7 +22,13 @@ export default function Navbar() {
       return 'light'
     }
   })
+const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
+useEffect(() => {
+  const handleResize = () => setIsMobile(window.innerWidth < 600);
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
   const navigate = useNavigate()
 
   // ✅ user fetch
@@ -117,7 +123,6 @@ export default function Navbar() {
   display:"flex",
   alignItems:"center",
   gap:"14px",
-  flexShrink: 0   // 👈 important
 }}>
 
           {/* Announcement */}
@@ -149,30 +154,40 @@ export default function Navbar() {
   Hi
 </span>
  <span style={{
-  fontSize:"14px",
+  fontSize:"13px",
   fontWeight:"600",
-  color: theme === "dark" ? "#fff" : "#555"   // 👈 FIX
+  color: theme === "dark" ? "#fff" : "#555",
+  maxWidth:"80px",
+  whiteSpace:"nowrap",
+  overflowX:"auto",
+  scrollbarWidth:"none"
 }}>
-    {user?.split(" ")[0]}
-  </span>
+  {user?.split(" ")[0]}
+</span>
 </div>
 <button
   onClick={handleLogout}
   style={{
-    padding:"6px 12px",
-    fontSize:"12px",
+    padding: isMobile ? "0" : "5px 8px",
+    fontSize:"14px",
     borderRadius:"8px",
     border:"1px solid rgba(255,255,255,0.2)",
     background:"linear-gradient(135deg,#ff4d4d,#ff6b6b)",
     color:"#fff",
     cursor:"pointer",
     boxShadow:"0 4px 12px rgba(255,77,77,0.4)",
-    transition:"0.3s"
+    transition:"0.3s",
+    whiteSpace:"nowrap",
+    display:"flex",
+    alignItems:"center",
+    justifyContent:"center"
   }}
-  onMouseOver={(e)=>e.target.style.transform="scale(1.05)"}
-  onMouseOut={(e)=>e.target.style.transform="scale(1)"}
 >
-   Logout
+  {isMobile ? (
+    <span className="material-symbols-outlined">
+      logout
+    </span>
+  ) : "Logout"}
 </button>
             </>
           )}
